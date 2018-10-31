@@ -1,11 +1,12 @@
 {
   "name": "og-sdk",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Node.js scraper module for og DAG chain",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/annchain/js-og-sdk",
   "author": "tony.stig",
   "license": "ISC",
   "dependencies": {
