@@ -12,7 +12,9 @@
   "dependencies": {
     "bignumber.js": "github:frozeman/bignumber.js-nolookahead",
     "bluebird": "^3.5.2",
+    "crypto": "^1.0.1",
     "crypto-js": "^3.1.4",
+    "secp256k1": "^3.5.2",
     "utf8": "^2.1.1",
     "xhr2-cookies": "^1.1.0",
     "xmlhttprequest": "*"
