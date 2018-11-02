@@ -1,6 +1,6 @@
 var OG = require('./index.js');
 var secp256k1 = require('secp256k1');
-const { randomBytes } = require('crypto');
+var { randomBytes } = require('crypto');
 
 var og = new OG;
 
