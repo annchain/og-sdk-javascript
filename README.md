@@ -29,7 +29,7 @@ npm install --save og-sdk
 
 2. require/import it in your JavaScript:
   ```js
-  var StellarSdk = require('og-sdk');
+  var OG = require('og-sdk');
   ```
   
 ## Usage
