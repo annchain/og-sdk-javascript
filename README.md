@@ -3,7 +3,7 @@
 js-og-sdk is a Node.js node_module for OG DAG chain. OG JavaScript API.
 
 
-# New Features!
+## New Features!
 
   - generate secp256k1 privKey and get publicKey & address
   - sign the message with the privKey
