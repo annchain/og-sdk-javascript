@@ -1,5 +1,6 @@
 # js-og-sdk
-[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/annchain/js-og-sdk/blob/master/LICENSE)
+[![license](https://img.shields.io/cpan/l/Config-Augeas.svg)](https://github.com/annchain/js-og-sdk/blob/master/LICENSE)
+
 js-og-sdk is a Node.js node_module for OG DAG chain. OG JavaScript API.
 
 
