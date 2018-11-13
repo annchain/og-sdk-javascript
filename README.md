@@ -1,4 +1,5 @@
 # js-og-sdk
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ba02977b6c9846cb91e5eb85ab80d1d1)](https://app.codacy.com/app/tonyStig-tao/js-og-sdk?utm_source=github.com&utm_medium=referral&utm_content=tonyStig-tao/js-og-sdk&utm_campaign=Badge_Grade_Dashboard)
 [![license](https://img.shields.io/cpan/l/Config-Augeas.svg)](https://github.com/annchain/js-og-sdk/blob/master/LICENSE)
 
 js-og-sdk is a Node.js node_module for OG DAG chain. OG JavaScript API.

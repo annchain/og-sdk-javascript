@@ -61,4 +61,4 @@ var newAccount = og.newAccount();
 
 var msg = randomBytes(32);
 var result = og.signRawTransaction(msg,newAccount.privateKey);
-console.log(result);
+// console.log(result);
