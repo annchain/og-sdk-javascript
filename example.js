@@ -8,7 +8,6 @@ og.setProvider(
     new OG.providers.HttpProvider('http://localhost:8000')
 );
 
-
 og.genesis().then(function(data){
     // console.log('genesis',data);
 });
