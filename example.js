@@ -8,6 +8,9 @@ og.setProvider(
     new OG.providers.HttpProvider('http://localhost:8000')
 );
 
+var new_account = og.newAccount();
+var address = new_account.address;
+
 og.genesis().then(function(data){
     // console.log('genesis',data);
 });
@@ -36,7 +39,6 @@ og.validators().then(function(data){
     // console.log('validators',data);
 });
 
-var address = '0x0b5d53f433b7e4a4f853a01e987f977497dda262';
 var hash = '0xd1b2606032d8bdd217f0ba69c2c3a7c2469cc5a6cf9491b14e4705c56db7a0f4';
 
 og.getBalance(address).then(function(data){
@@ -55,37 +57,27 @@ og.getTransaction(hash).then(function(data){
     // console.log('getTransaction',data);
 });
 
-var new_account = og.newAccount();
-console.log(new_account);
+//gen and send a transaction example
 
-// var from = "0xb276f14504557c13e69ef04bc01334d3e332e26b";
-var from = new_account.address;
-var to = '0xa7656df695f2e74b060e3c9a3c8e425cf2107c25';
-var value = 0;
-var publicKey = new_account.public;
-var publicKey_raw = new_account.public_raw;
-var prikey = new_account.privateKey;
-// var publicKey = "331/c1d6d2b6cfefb4f2a5faa7fccd07e025682e3667951dbbd954550413d4c90da5fef46b167886d199eb4ef12cbc6972a4bed80400c4911a27834ccee663d44";
-// var prikey = "e271b1414efa510d79d7f3293b7c143fa76ebdf993302c006d435c3b1adfc482"
-var height = 10;
-og.getNonce(from).then(function(data){
-    nonce = data.nonce + 1;
+var new_account = og.newAccount();
+og.getNonce(new_account.address).then(function(data){
+    nonce = data.nonce + 1; //get account nonce
 }).then(function(){
-    console.log(from,to,value,publicKey,height,nonce);
-    var rawTx = og.genRawTransaction(to,value,publicKey,height,nonce);
-    var signature = og.signRawTransaction(rawTx,prikey).signature;
-    console.log(signature);
-    var tx = {
-        "nonce" : nonce.toString(),
-        "from" : from,
-        "to" : to,
-        "value" : value.toString() ,
-        "signature": "0x" + signature.toString('hex'),
-        "pubkey": "0x01" + publicKey_raw
+    var txParams = {
+        from : new_account.address,
+        to : '0xa7656df695f2e74b060e3c9a3c8e425cf2107c25',
+        value : 0,
+        publicKey : new_account.public,
+        publicKey_raw : new_account.public_raw,
+        height : 10,
+        nonce : nonce
     }
-    var tx = JSON.stringify(tx);
+    var rawTx = og.genRawTransaction(txParams);
+    var signature = og.signRawTransaction(rawTx,new_account.privateKey).signature;
+    var tx = og.makeUpTransaction(txParams,signature);
+    console.log(tx);
     og.sendTransaction(tx).then(function(data){
-        console.log(data);
+        console.log(data.body);
         data = JSON.parse(data.body);
         return og.getTransaction(data.hash);
     }).then(function(data){
@@ -93,12 +85,24 @@ og.getNonce(from).then(function(data){
     });
 });
 
-
-// {
-// 	"nonce":"0",
-// 	"from":"0x61a74d3f7f8e24b5d46ef4cffb421c3fa3a483dd",
-// 	"to":"0xa7656df695f2e74b060e3c9a3c8e425cf2107c25",
-// 	"value":"10",
-// 	"signature":"0xa93be7758c52dd3cb1f747f44844235b631391dbca8eebde32318b897aad454f2e9709face3438e55901e5e34f43162caf5743ced13b0b45d81f6dbfc816733f",
-// 	"pubkey":"0x01969b0aa2a95da2f17a7ddfdad63839cf07c811b6fa122080c3e12d7fde9eb4a40bab371f97a6ca932186a75d3a56c99ebaf6f7b994045f5122cc5bebcf7ea9ae"
-// }
+// sorce:
+// {"nonce":"0",
+//  "from":"0xe0f83f11d769c000d04b1765838c4daed6c9f6c3",
+//  "to":"0xa7656df695f2e74b060e3c9a3c8e425cf2107c25",
+//  "value":"0",
+//  "signature":"0x7bd30f5481640303d64a924f1c0b9d6c35f4666b6b13b4299a4200fcfffeb4f87119599ee32e8ce347eb649504d13ed4aedcd4f6cd2baea361b3d1927fffaf3600",
+//  "pubkey":"0x0104ae60c54ccdab2a4a36637d9d6b2bad586dfd107c54652f2c3280dfa5ce16e3bf97006ca8d99d669cde2375fec5eeed63cdba80cfecb7e0154ce3974072d9ac40"}
+// res:
+// {"hash":"0x999c8594193af73cb43d4648d6f5cbc5e45f4ea738ff03f98f5a3bedff5b39cf"}
+// tx in og:
+// { Type: 0,
+//   Hash: '0x999c8594193af73cb43d4648d6f5cbc5e45f4ea738ff03f98f5a3bedff5b39cf',
+//   ParentsHash: [ '0x2ddfd0ac643642e497d8a0d1573a225ee34505f3ca5cce1a32a997d0bd26d848' ],
+//   AccountNonce: 0,
+//   Height: 1,
+//   PublicKey: 'BK5gxUzNqypKNmN9nWsrrVht/RB8VGUvLDKA36XOFuO/lwBsqNmdZpzeI3X+xe7tY826gM/st+AVTOOXQHLZrEA=',
+//   Signature: 'e9MPVIFkAwPWSpJPHAudbDX0ZmtrE7QpmkIA/P/+tPhxGVme4y6M40frZJUE0T7UrtzU9s0rrqNhs9GSf/+vNgA=',
+//   MineNonce: 1,
+//   From: '0xe0f83f11d769c000d04b1765838c4daed6c9f6c3',
+//   To: '0xa7656df695f2e74b060e3c9a3c8e425cf2107c25',
+//   Value: '0' }
