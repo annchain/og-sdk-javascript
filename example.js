@@ -58,8 +58,6 @@ og.getTransaction(hash).then(function(data){
 });
 
 //gen and send a transaction example
-
-var new_account = og.newAccount();
 og.getNonce(new_account.address).then(function(data){
     nonce = data.nonce + 1; //get account nonce
 }).then(function(){
@@ -72,8 +70,8 @@ og.getNonce(new_account.address).then(function(data){
         height : 10,
         nonce : nonce
     }
-    var rawTx = og.genRawTransaction(txParams);
-    var signature = og.signRawTransaction(rawTx,new_account.privateKey).signature;
+    var signTarget = og.genRawTransaction(txParams);
+    var signature = og.signRawTransaction(signTarget,new_account.privateKey).signature;
     var tx = og.makeUpTransaction(txParams,signature);
     console.log(tx);
     og.sendTransaction(tx).then(function(data){
