@@ -1,6 +1,6 @@
 {
   "name": "og-sdk",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "Node.js scraper module for og DAG chain",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/annchain/js-og-sdk",
   "author": "tony.stig",
-  "license": "ISC",
+  "license": "LGPL-2.1",
   "dependencies": {
     "bignumber.js": "github:frozeman/bignumber.js-nolookahead",
     "bluebird": "^3.5.2",
