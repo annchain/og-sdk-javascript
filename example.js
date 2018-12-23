@@ -11,6 +11,10 @@ og.setProvider(
 var new_account = og.newAccount();
 var address = new_account.address;
 
+var pri = 'fc18efa380250fa31e768154e9b77fd397d6bdd7d15bf4b4dad967898e193b89';
+var recoverAccount = og.recoveryAccount(pri);
+console.log('aaaa',recoverAccount)
+
 og.genesis().then(function(data){
     // console.log('genesis',data);
 });
@@ -73,13 +77,13 @@ og.getNonce(new_account.address).then(function(data){
     var signTarget = og.genRawTransaction(txParams);
     var signature = og.signRawTransaction(signTarget,new_account.privateKey).signature;
     var tx = og.makeUpTransaction(txParams,signature);
-    console.log(tx);
+    // console.log(tx);
     og.sendTransaction(tx).then(function(data){
-        console.log(data.body);
+        // console.log(data.body);
         data = JSON.parse(data.body);
         return og.getTransaction(data.hash);
     }).then(function(data){
-        console.log(data);
+        // console.log(data);
     });
 });
 
