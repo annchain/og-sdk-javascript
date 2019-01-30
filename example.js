@@ -1,6 +1,11 @@
 var OG = require('./index.js');
 var secp256k1 = require('secp256k1');
 var { randomBytes } = require('crypto');
+var assert = require('assert')
+var createKeccakHash = require('keccak');
+var _ = require('underscore');
+
+
 
 var og = new OG;
 
@@ -14,6 +19,9 @@ var address = new_account.address;
 var pri = 'fc18efa380250fa31e768154e9b77fd397d6bdd7d15bf4b4dad967898e193b89';
 var recoverAccount = og.recoveryAccount(pri);
 console.log('aaaa',recoverAccount)
+
+var a = og.publicToAddress('fc18efa380250fa31e768154e9b77fd397d6bdd7d15bf4b4dad967898e193b89')
+console.log('here',a)
 
 og.genesis().then(function(data){
     // console.log('genesis',data);
@@ -43,7 +51,7 @@ og.validators().then(function(data){
     // console.log('validators',data);
 });
 
-var hash = '0xd1b2606032d8bdd217f0ba69c2c3a7c2469cc5a6cf9491b14e4705c56db7a0f4';
+var hash = '0x0187627b7585ff993bcaad3155ba5fbf1768899ec6de17b92bc01c48471e39d8';
 
 og.getBalance(address).then(function(data){
     // console.log('getBalance',data);
@@ -61,32 +69,152 @@ og.getTransaction(hash).then(function(data){
     // console.log('getTransaction',data);
 });
 
-//gen and send a transaction example
-og.getNonce(new_account.address).then(function(data){
-    nonce = data.nonce + 1; //get account nonce
-}).then(function(){
-    var txParams = {
-        from : new_account.address,
-        to : '0xa7656df695f2e74b060e3c9a3c8e425cf2107c25',
-        value : 0,
-        publicKey : new_account.public,
-        publicKey_raw : new_account.public_raw,
-        height : 10,
-        nonce : nonce
-    }
-    var signTarget = og.genRawTransaction(txParams);
-    var signature = og.signRawTransaction(signTarget,new_account.privateKey).signature;
-    var tx = og.makeUpTransaction(txParams,signature);
-    // console.log(tx);
-    og.sendTransaction(tx).then(function(data){
-        // console.log(data.body);
-        data = JSON.parse(data.body);
-        return og.getTransaction(data.hash);
-    }).then(function(data){
-        // console.log(data);
-    });
-});
+og.confirm(hash).then(function(data){
+    // console.log('confirm',data);
+})
 
+//gen and send a transaction example
+// og.getNonce(new_account.address).then(function(data){
+//     nonce = data.data + 1; //get account nonce
+// }).then(function(){
+//     var txParams = {
+//         from : new_account.address,
+//         to : '0xa7656df695f2e74b060e3c9a3c8e425cf2107c25',
+//         value : 0,
+//         publicKey : new_account.public,
+//         publicKey_raw : new_account.public_raw,
+//         height : 10,
+//         nonce : nonce
+//     }
+//     var signTarget = og.genRawTransaction(txParams);
+//     var signature = og.signRawTransaction(signTarget,new_account.privateKey).signature;
+//     var tx = og.makeUpTransaction(txParams,signature);
+//     // console.log(tx);
+//     og.sendTransaction(tx).then(function(data){
+//         console.log(data.body);
+//         data = JSON.parse(data.body);
+//         return og.getTransaction(data.data);
+//     }).then(function(data){
+//         console.log(data);
+//     });
+// });
+
+var pri = '70e6b713cd32904d07a55b3af5784e0b23eb38589ebf975f0ab89e6f8d786f01'
+var acc = og.recoveryAccount(pri)
+// console.log(acc)
+    var txParams = {
+        from : acc.address,
+        to : "0x6d8daedbd7ed0f772d1079b91ee84d57ed20dbce",
+        value : 123,
+        publicKey : acc.public,
+        publicKey_raw : acc.public_raw,
+        height : 10,
+        nonce : 1
+    }
+var signTarget = og.genRawTransaction(txParams);
+console.log(signTarget.toString('hex'))
+
+var signature = og.signRawTransaction(signTarget,pri).signature;
+console.log(signature)
+console.log(signature.toString('hex'))
+
+function genRawTransaction (txParams) {
+    var tx = {};
+    publicKey = new Buffer(txParams.publicKey,'hex');
+    tx.From = formatAddress(publicToAddress(publicKey).toString('hex'));
+    tx.To = txParams.to;
+    tx.Value = txParams.value;
+    tx.Nonce = txParams.nonce;
+    tx.TxBase = {};
+    tx.TxBase.PublicKey = publicKey.toString('hex');
+    tx.TxBase.Height = txParams.height;
+
+    var signTarget_Nonce = intToUint64(tx.Nonce);
+    var signTarget_from = tx.From.slice(2);
+    var signTarget_To = tx.To.slice(2);
+    var signTarget_Value = intToHex(tx.Value);
+    var signTarget = signTarget_Nonce+signTarget_from+signTarget_To+signTarget_Value;
+    // console.log(signTarget)
+}
+
+function formatAddress (addr, format){
+    if(_.isUndefined(format) || !_.isString(format))
+        format = 'hex';
+
+    if(_.isUndefined(addr)
+       || !_.isString(addr))
+        addr = '0000000000000000000000000000000000000000';
+
+    if(addr.substr(0, 2) == '0x' && format == 'raw')
+        addr = addr.substr(2);
+
+    if(addr.substr(0, 2) != '0x' && format == 'hex')
+        addr = '0x' + addr;
+
+    return addr;
+};
+
+function intToUint64 (i){
+    var hex = i.toString(16); // eslint-disable-line
+    if (hex.length < 16){
+        return (Array(16).join("0") + hex).slice(-16);
+    }else if (hex.length = 16){
+        return hex;
+    }else{
+        error
+    }
+}
+
+function publicToAddress (pubKey,sanitize){
+    pubKey = toBuffer(pubKey)
+    if (sanitize && (pubKey.length !== 64)) {
+      pubKey = secp256k1.publicKeyConvert(pubKey, false).slice(1);
+    }
+    assert(pubKey.length == 64)
+    // Only take the lower 160bits of the hash
+    return keccak(pubKey).slice(-20)
+}
+
+function toBuffer(v) {
+    if (!Buffer.isBuffer(v)) {
+      if (Array.isArray(v)) {
+        v = Buffer.from(v)
+      } else if (typeof v === 'string') {
+        if (isHexString(v)) {
+          v = Buffer.from(padToEven(exports.stripHexPrefix(v)), 'hex')
+        } else {
+          v = Buffer.from(v)
+        }
+      } else if (typeof v === 'number') {
+        v = exports.intToBuffer(v)
+      } else if (v === null || v === undefined) {
+        v = Buffer.allocUnsafe(0)
+      } else if (BN.isBN(v)) {
+        v = v.toArrayLike(Buffer)
+      } else if (v.toArray) {
+        // converts a BN to a Buffer
+        v = Buffer.from(v.toArray())
+      } else {
+        throw new Error('invalid type')
+      }
+    }
+    return v
+  }
+
+  function keccak (a, bits) {
+    a = toBuffer(a)
+    if (!bits) bits = 256
+  
+    return createKeccakHash('keccak' + bits).update(a).digest()
+  }
+
+  function intToHex(i){
+    var hex = i.toString(16); // eslint-disable-line
+    if (hex.length%2){
+        hex = '0'+hex;
+    }
+    return hex;
+}
 // sorce:
 // {"nonce":"0",
 //  "from":"0xe0f83f11d769c000d04b1765838c4daed6c9f6c3",
