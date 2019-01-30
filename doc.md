@@ -24,19 +24,19 @@ og.net_info()
 **Return**:
 ```json
 { "data":
-   { "id": 'cf6b7187767f9dab5e71110f6fc36c...b0803c4d7374e2b189d89ee168c3e1f7ad4e834008ffb9a',
-     "short_id": 'cf6b7...f9dab',
-     "name": 'og',
-     "enode": 'enode://cf6b7187767f9d...168c3e1f7ad4e834008ffb9a@[::]:8001',
-     "ip": '::',
+   { "id": "cf6b7187767f9dab5e71110f6fc36c...b0803c4d7374e2b189d89ee168c3e1f7ad4e834008ffb9a",
+     "short_id": "cf6b7...f9dab",
+     "name": "og",
+     "enode": "enode://cf6b7187767f9d...168c3e1f7ad4e834008ffb9a@[::]:8001",
+     "ip": "::",
      "ports": { 
-        discovery: 8001,
-        listener: 8001 
+        "discovery": 8001,
+        "listener": 8001 
      },
-     "listenAddr": '[::]:8001',
+     "listenAddr": "[::]:8001",
      "protocols": { og: [Object] } 
    },
-    "message": ''
+    "message": ""
 }
 ```
 ---
@@ -75,18 +75,18 @@ og.genesis()
 ```json
 { "data":
    { "Type": 1,
-     "Hash": '0x1dfb6fea83e3d62...3ba4f98c80ae0ea9e3db97d3736e',
+     "Hash": "0x1dfb6fea83e3d62...3ba4f98c80ae0ea9e3db97d3736e",
      "ParentsHash": null,
      "AccountNonce": 0,
      "Height": 0,
-     "PublicKey": 's+G4MG4bqxXtUaTCS...KHE55jfTFL8NYcudHH7g==',
-     "Signature": 'MEQCIBIwK9fJUfy/7...iBCTXEC2on0R7KMU6rjiKzwulcAjIBI9eNNwRdlscq39g==',
+     "PublicKey": "s+G4MG4bqxXtUaTCS...KHE55jfTFL8NYcudHH7g==",
+     "Signature": "MEQCIBIwK9fJUfy/7...iBCTXEC2on0R7KMU6rjiKzwulcAjIBI9eNNwRdlscq39g==",
      "MineNonce": 0,
      "Id": 0,
-     "Issuer": '0x0000000000000000000000000000000000000000',
+     "Issuer": "0x0000000000000000000000000000000000000000",
      "ContractHashOrder": [] 
    },
-    "message": ''
+    "message": ""
 }
 ```
 ---
@@ -99,20 +99,20 @@ og.sequencer()
 ```json
 { "data":
    { "Type": 1,
-     "Hash": '0x958d9e9fdb93...389e66ee24e1d1708e3',
+     "Hash": "0x958d9e9fdb93...389e66ee24e1d1708e3",
      "ParentsHash":
-      [ '0xfa031a8c3c790...35f775f5ccc25cf4389',
-        '0x2fd14e4348de6...52257727bfdf6502c80' ],
+      [ "0xfa031a8c3c790...35f775f5ccc25cf4389",
+        "0x2fd14e4348de6...52257727bfdf6502c80" ],
      "AccountNonce": 2386,
      "Height": 116,
-     "PublicKey": 'BIDG6ARHwZsp...wqi0xkXyXnI10gHt8RtnRHzrI=',
-     "Signature": 'R7iqPg4VioLn...788kvk0sSlUTxCpSjw8cIcSwA=',
+     "PublicKey": "BIDG6ARHwZsp...wqi0xkXyXnI10gHt8RtnRHzrI=",
+     "Signature": "R7iqPg4VioLn...788kvk0sSlUTxCpSjw8cIcSwA=",
      "MineNonce": 1,
      "Id": 116,
-     "Issuer": '0x7349f7a6f622378d5fb0e2c16b9d4a3e5237c187',
+     "Issuer": "0x7349f7a6f622378d5fb0e2c16b9d4a3e5237c187",
      "ContractHashOrder": [] 
    },
-    "message": '' 
+    "message": "" 
 }
 ```
 ---
@@ -125,18 +125,18 @@ og.status()
 ```json
 { "data":
    { "node_info":
-      { "id": 'cf6b7187767f9...b0803c4d7374e2b189d89ee168c3e1f7ad4e834008ffb9a',
-        "short_id": 'cf6b7187767f9dab',
-        "name": 'og',
-        "enode": 'enode://cf6b718776...46b04e834008ffb9a@[::]:8001',
-        "ip": '::',
+      { "id": "cf6b7187767f9...b0803c4d7374e2b189d89ee168c3e1f7ad4e834008ffb9a",
+        "short_id": "cf6b7187767f9dab",
+        "name": "og",
+        "enode": "enode://cf6b718776...46b04e834008ffb9a@[::]:8001",
+        "ip": "::",
         "ports": [Object],
-        "listenAddr": '[::]:8001',
+        "listenAddr": "[::]:8001",
         "protocols": [Object] 
       },
      "peers_info": [] 
    },
-    "message": '' 
+    "message": "" 
 }
 ```
 ---
@@ -154,10 +154,10 @@ og.getBalance(address).then(function(data){});
 **Return**:
 ```json
 { "data":
-   { "address": '0x50c184bd1d896b5050dbb2c04f8fce2fc039f267',
-     "balance": '0' 
+   { "address": "0x50c184bd1d896b5050dbb2c04f8fce2fc039f267",
+     "balance": "0" 
    },
-  "message": '' 
+  "message": "" 
 }
 ```
 ---
@@ -175,7 +175,7 @@ og.getNonce(address).then(function(data){});
 ```json
 { 
     "data": -1,
-    "message": '' 
+    "message": "" 
 }
 ```
 ---
@@ -192,12 +192,12 @@ og.getReceipt(hash).then(function(data){});
 **Return**:
 ```json
 { "data":
-   { "tx_hash": '0x0187627b7585ff993bcaad3155ba5fbf1768899ec6de17b92bc01c48471e39d8',
+   { "tx_hash": "0x0187627b7585ff993bcaad3155ba5fbf1768899ec6de17b92bc01c48471e39d8",
      "status": 1,
-     "result": '',
-     "contract_address": '0x0000000000000000000000000000000000000000'
+     "result": "",
+     "contract_address": "0x0000000000000000000000000000000000000000"
     },
-  "message": '' 
+  "message": "" 
 }
 ```
 ---
@@ -215,21 +215,21 @@ og.getTransaction(hash).then(function(data){});
 ```json
 { "data":
    { "Type": 0,
-     "Hash": '0x0187627b7585ff99...9ec6de17b92bc01c48471e39d8',
+     "Hash": "0x0187627b7585ff99...9ec6de17b92bc01c48471e39d8",
      "ParentsHash":
-      [ '0xc6adf0300799d6...23ab0ac4d24fdb8becd966d78',
-        '0x8d44c04d5387bd...f4a3ab9869f8a5e58f44c9c7a' ],
+      [ "0xc6adf0300799d6...23ab0ac4d24fdb8becd966d78",
+        "0x8d44c04d5387bd...f4a3ab9869f8a5e58f44c9c7a" ],
      "AccountNonce": 8061,
      "Height": 417,
-     "PublicKey": 'BKVH401d4INGypO...IoJGIkRt5Rk+eGR+I=',
-     "Signature": 'fh1p/58PRiZuafN...Ve9AaKtZcAOgjiFgE=',
+     "PublicKey": "BKVH401d4INGypO...IoJGIkRt5Rk+eGR+I=",
+     "Signature": "fh1p/58PRiZuafN...Ve9AaKtZcAOgjiFgE=",
      "MineNonce": 1,
-     "From": '0x96f4ac2f321...1f268f6f1d5406',
-     "To": '0x4a10e5baa3325...d92a011ef312',
-     "Value": '0',
+     "From": "0x96f4ac2f321...1f268f6f1d5406",
+     "To": "0x4a10e5baa3325...d92a011ef312",
+     "Value": "0",
      "Data": null 
    },
-  "message": '' 
+  "message": "" 
 }
 ```
 ---
@@ -247,7 +247,7 @@ og.confirm(hash).then(function(data){});
 ```json
 { 
     "data": true,
-    "message": '' 
+    "message": "" 
 }
 ```
 ---
@@ -259,10 +259,10 @@ og.newAccount()
 **Return**:
 ```json
 { 
-    "address": '0x54e50d4fba...4fbd71544096',
-    "privateKey": 'ddc0fd455b01f4dc...756ad5b5f272e5ce2b634eb8d',
-    "public_raw": '04156d87d306421f363...49f6a81b7dcc1acd3eda523d4231b844235b92af26',
-    "public": '156d87d306421f3636035c69a3...49f6a81b7dcc1acd3eda523d4231b844235b92af26',
+    "address": "0x54e50d4fba...4fbd71544096",
+    "privateKey": "ddc0fd455b01f4dc...756ad5b5f272e5ce2b634eb8d",
+    "public_raw": "04156d87d306421f363...49f6a81b7dcc1acd3eda523d4231b844235b92af26",
+    "public": "156d87d306421f3636035c69a3...49f6a81b7dcc1acd3eda523d4231b844235b92af26",
     "encrypted": false,
     "locked": false 
 }
@@ -281,10 +281,10 @@ og.recoveryAccount(privateKey)
 **Return**:
 ```json
 { 
-    "address": '0x54e50d4fba...4fbd71544096',
-    "privateKey": 'ddc0fd455b01f4dc...756ad5b5f272e5ce2b634eb8d',
-    "public_raw": '04156d87d306421f363...49f6a81b7dcc1acd3eda523d4231b844235b92af26',
-    "public": '156d87d306421f3636035c69a3...49f6a81b7dcc1acd3eda523d4231b844235b92af26',
+    "address": "0x54e50d4fba...4fbd71544096",
+    "privateKey": "ddc0fd455b01f4dc...756ad5b5f272e5ce2b634eb8d",
+    "public_raw": "04156d87d306421f363...49f6a81b7dcc1acd3eda523d4231b844235b92af26",
+    "public": "156d87d306421f3636035c69a3...49f6a81b7dcc1acd3eda523d4231b844235b92af26",
     "encrypted": false,
     "locked": false 
 }
@@ -369,11 +369,11 @@ see example.js
 ```json
 {
         "nonce" : 0,
-        "from" : '0x96f4ac2f321...1f268f6f1d5406',
-        "to" : '0x4a10e5baa3325...d92a011ef312',
+        "from" : "0x96f4ac2f321...1f268f6f1d5406",
+        "to" : "0x4a10e5baa3325...d92a011ef312",
         "value" : 10,
-        "signature": '32d5989ceb1352030acdb26d96d5ab458b54f5df565f05d9d69377fc3b720aaa6ed798286f922805196b6a88ecb3cec40f0fa937ed79070d79a23812355e8b5d',
-        "pubkey": 'BKVH401d4INGypO...IoJGIkRt5Rk+eGR+I=' 
+        "signature": "32d5989ceb1352030acdb26d96d5ab458b54f5df565f05d9d69377fc3b720aaa6ed798286f922805196b6a88ecb3cec40f0fa937ed79070d79a23812355e8b5d",
+        "pubkey": "BKVH401d4INGypO...IoJGIkRt5Rk+eGR+I=" 
 }
 ```
 ---
