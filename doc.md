@@ -317,12 +317,7 @@ og.genRawTransaction(txParams)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | txParams | object | yes |
-| txParams.nonce | int string | yes |
-| txParams.from | hex string | yes |
-| txParams.to | hex string | no | can be null when creat a contract
-| txParams.value | int string | yes | 
-| txParams.pubkey | hex string | yes |
-| txParams.data | hex string | no | 
+
 
 **Example**:  
 ```js
