@@ -313,6 +313,7 @@ og.inspect_0x(str)
 og.genRawTransaction(txParams)
 ```
 **Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | txParams | object | yes |
