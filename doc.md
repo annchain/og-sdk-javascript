@@ -351,7 +351,7 @@ og.signRawTransaction(signTarget)
 **Parameter**:  
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
-| signTarget | string | yes | generate by og.genRawTransaction()
+| signTarget | string | yes | generate by og.genRawTransaction() 
 
 **Example**:  
 see example.js
@@ -371,7 +371,7 @@ og.makeUpTransaction(txParams, signature)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | txParams | object | yes | same as og.genRawTransaction() parameter
-| signature | string | yes | generate by og.signRawTransaction
+| signature | string | yes | generate by og.signRawTransaction 
 
 **Example**:  
 see example.js
@@ -395,7 +395,7 @@ og.sendTransaction(tx)
 **Parameter**:  
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
-| tx | object | yes | generate by og.makeUpTransaction()
+| tx | object | yes | generate by og.makeUpTransaction() 
 
 **Return**:
 ```json
@@ -413,7 +413,7 @@ og.publicToAddress(pubKey, [sanitize])
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | pubKey | string | yes | 
-| sanitize | boolean | no
+| sanitize | boolean | no 
 
 **Return**:
 ```
@@ -457,7 +457,7 @@ og.buf2hex(buf)
 ```
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
-| buf | Buffer | yes |
+| buf | Buffer | yes | 
 
 **Return**:
 ```
