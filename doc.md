@@ -349,6 +349,7 @@ to string hex:
 og.signRawTransaction(signTarget)
 ```
 **Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | signTarget | string | yes | generate by og.genRawTransaction() 
@@ -368,6 +369,7 @@ to string hex:
 og.makeUpTransaction(txParams, signature)
 ```
 **Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | txParams | object | yes | same as og.genRawTransaction() parameter
@@ -393,6 +395,7 @@ see example.js
 og.sendTransaction(tx)
 ```
 **Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | tx | object | yes | generate by og.makeUpTransaction() 
@@ -410,6 +413,8 @@ og.sendTransaction(tx)
 ```js
 og.publicToAddress(pubKey, [sanitize])
 ```
+**Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | pubKey | string | yes | 
@@ -427,6 +432,8 @@ to string hex
 ```js
 og.toBuffer(param)
 ```
+**Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | param | Buffer\Array\String\Number | yes | 
@@ -441,6 +448,8 @@ og.toBuffer(param)
 ```js
 og.sha256(param)
 ```
+**Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | param | Buffer\Array\String\Number | yes | 
@@ -455,6 +464,8 @@ og.sha256(param)
 ```js
 og.buf2hex(buf)
 ```
+**Parameter**:  
+
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | buf | Buffer | yes | 
