@@ -171,6 +171,7 @@ og.getNonce(address).then(function(data){});
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | address | string | yes | the address nonce you want to query
+
 **Return**:
 ```json
 { 
@@ -189,6 +190,7 @@ og.getReceipt(hash).then(function(data){});
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | hash | string | yes | the transaction hash you want to query
+
 **Return**:
 ```json
 { "data":
@@ -211,6 +213,7 @@ og.getTransaction(hash).then(function(data){});
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | hash | string | yes | the transaction hash you want to query
+
 **Return**:
 ```json
 { "data":
@@ -243,6 +246,7 @@ og.confirm(hash).then(function(data){});
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | hash | string | yes | the transaction hash you want to query
+
 **Return**:
 ```json
 { 
@@ -278,6 +282,7 @@ og.recoveryAccount(privateKey)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | privateKey | string | yes |
+
 **Return**:
 ```json
 { 
@@ -300,6 +305,7 @@ og.inspect_0x(str)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | str | string | yes |
+
 ---
 ## **CREATE NEW TRANSACTION**
 **Method**:
@@ -316,6 +322,7 @@ og.genRawTransaction(txParams)
 | txParams.value | int string | yes | 
 | txParams.pubkey | hex string | yes |
 | txParams.data | hex string | no | 
+
 **Example**:  
 ```js
 txParams = {
@@ -344,6 +351,7 @@ og.signRawTransaction(signTarget)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | signTarget | string | yes | generate by og.genRawTransaction()
+
 **Example**:  
 see example.js
 **Return**:
@@ -363,6 +371,7 @@ og.makeUpTransaction(txParams, signature)
 | --- | --- | --- | ---
 | txParams | object | yes | same as og.genRawTransaction() parameter
 | signature | string | yes | generate by og.signRawTransaction
+
 **Example**:  
 see example.js
 **Return**:
@@ -386,6 +395,7 @@ og.sendTransaction(tx)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | tx | object | yes | generate by og.makeUpTransaction()
+
 **Return**:
 ```json
 {
@@ -403,6 +413,7 @@ og.publicToAddress(pubKey, [sanitize])
 | --- | --- | --- | ---
 | pubKey | string | yes | 
 | sanitize | boolean | no
+
 **Return**:
 ```
 <Buffer 70 95 00 b3 73 d7 1d 15 39 09 4b 26 f8 45 85 41 79 04 75 c4>
@@ -418,6 +429,7 @@ og.toBuffer(param)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | param | Buffer\Array\String\Number | yes | 
+
 **Return**:
 ```
 <Buffer>
@@ -431,6 +443,7 @@ og.sha256(param)
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
 | param | Buffer\Array\String\Number | yes | 
+
 **Return**:
 ```
 <Buffer>
@@ -443,7 +456,8 @@ og.buf2hex(buf)
 ```
 | Parameter | Type | Required | Remark
 | --- | --- | --- | ---
-| buf | Buffer | yes | 
+| buf | Buffer | yes |
+
 **Return**:
 ```
 <hex>
