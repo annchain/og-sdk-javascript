@@ -5,8 +5,6 @@ var assert = require('assert')
 var createKeccakHash = require('keccak');
 var _ = require('underscore');
 
-
-
 var og = new OG;
 
 og.setProvider(
