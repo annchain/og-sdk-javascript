@@ -1,6 +1,6 @@
 {
   "name": "og-sdk",
-  "version": "0.2.32",
+  "version": "0.2.33",
   "description": "Node.js scraper module for og DAG chain",
   "main": "index.js",
   "scripts": {
